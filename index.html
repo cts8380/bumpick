@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>범픽 - 당신의 순간을 담다</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">📸 범픽</div>
+            <nav class="nav">
+                <a href="#intro" class="nav-link">홈</a>
+                <a href="#about" class="nav-link">소개</a>
+                <a href="#portfolio" class="nav-link">포트폴리오</a>
+                <a href="#pricing" class="nav-link">가격안내</a>
+                <a href="#location" class="nav-link">위치안내</a>
+                <a href="#contact" class="nav-link">연락하기</a>
+            </nav>
+            <div class="mobile-menu-btn">☰</div>
+        </div>
+    </header>
+
+    <!-- 인트로 섹션 -->
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <div class="door left-door"></div>
+            <div class="door right-door"></div>
+            <div class="content">
+                <img src="images/mainpage.jpg" alt="메인 이미지" class="main-image">
+                <h1 class="slogan">길 위의 찰나, 당신의 기억이 됩니다</h1>
+                <div class="intro-badges">
+                    <span class="badge">⭐ 5.0 평점</span>
+                    <span class="badge">📷 500+ 촬영</span>
+                    <span class="badge">💝 100% 만족도</span>
+                </div>
+            </div>
+            <div class="scroll-indicator">⬇️</div>
+        </div>
+        <audio id="shutter-sound" src="sounds/camera.mp3" preload="auto"></audio>
+    </section>
+
+    <!-- 소개 섹션 -->
+    <section id="about" class="about-section">
+        <div class="section-container">
+            <h2 class="section-title">우리의 이야기</h2>
+            <p class="section-description">
+                관광지를 배경으로 특별한 순간을 담아드립니다.<br>
+                자연스럽고 감성적인 사진으로 여러분의 소중한 기억을 만들어보세요.
+            </p>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">📸</div>
+                    <h3>전문 촬영</h3>
+                    <p>3년 경력의 포토그래퍼가 직접 촬영합니다</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>빠른 전달</h3>
+                    <p>촬영 후 24시간 내 고화질 원본 사진을 전달해드립니다</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💎</div>
+                    <h3>무제한 보정</h3>
+                    <p>만족할 때까지 무제한으로 보정 서비스를 제공합니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 포트폴리오 섹션 -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="section-container">
+            <h2 class="section-title">포트폴리오</h2>
+            <p class="section-description">실제 고객님들의 소중한 순간들</p>
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="images/IMG_2048.jpg" alt="촬영 사진 1">
+                    <div class="photo-overlay">
+                        <h4>커플 스냅</h4>
+                        <p>한강공원</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="images/IMG_2047.jpg" alt="촬영 사진 2">
+                    <div class="photo-overlay">
+                        <h4>가족 사진</h4>
+                        <p>서울숲</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="images/IMG_2046.jpg" alt="촬영 사진 3">
+                    <div class="photo-overlay">
+                        <h4>개인 프로필</h4>
+                        <p>경복궁</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 가격안내 섹션 -->
+    <section id="pricing" class="pricing-section">
+        <div class="section-container">
+            <h2 class="section-title">가격안내</h2>
+            <p class="section-description">합리적인 가격으로 최고의 서비스를 제공합니다</p>
+            <p class="section-subdescription">직접 찾아가는 서비스 (예약제)</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>기본 패키지</h3>
+                    <div class="price">50,000원</div>
+                    <ul class="pricing-features">
+                        <li>✓ 30분 촬영</li>
+                        <li>✓ 원본 20장</li>
+                        <li>✓ 보정본 5장</li>
+                        <li>✓ 인쇄 3장</li>
+                        <li>✓ 24시간 내 전달</li>
+                    </ul>
+                    <button class="pricing-btn">선택하기</button>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">인기</div>
+                    <h3>프리미엄 패키지</h3>
+                    <div class="price">80,000원</div>
+                    <ul class="pricing-features">
+                        <li>✓ 60분 촬영</li>
+                        <li>✓ 원본 50장</li>
+                        <li>✓ 보정본 15장</li>
+                        <li>✓ 인쇄 5장</li>
+                        <li>✓ 12시간 내 전달</li>
+                    </ul>
+                    <button class="pricing-btn">선택하기</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>럭셔리 패키지</h3>
+                    <div class="price">120,000원</div>
+                    <ul class="pricing-features">
+                        <li>✓ 90분 촬영</li>
+                        <li>✓ 원본 100장</li>
+                        <li>✓ 보정본 30장</li>
+                        <li>✓ 인쇄 10장</li>
+                        <li>✓ 6시간 내 전달</li>
+                    </ul>
+                    <button class="pricing-btn">선택하기</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 위치안내 섹션 -->
+    <section id="location" class="location-section">
+        <div class="section-container">
+            <h2 class="section-title">오늘의 촬영 장소</h2>
+            <div class="location-info">
+                <div class="location-card">
+                    <div class="location-icon">📍</div>
+                    <h3>서울숲</h3>
+                    <p>오후 3시 ~ 6시</p>
+                    <p class="location-desc">자연과 도시가 어우러진 아름다운 배경</p>
+                    <div class="location-status available">예약 가능</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">🌅</div>
+                    <h3>한강공원</h3>
+                    <p>오후 5시 ~ 7시</p>
+                    <p class="location-desc">황금빛 노을과 함께하는 로맨틱한 순간</p>
+                    <div class="location-status busy">예약 중</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">🏛️</div>
+                    <h3>경복궁</h3>
+                    <p>오전 10시 ~ 12시</p>
+                    <p class="location-desc">전통과 현대가 만나는 특별한 공간</p>
+                    <div class="location-status available">예약 가능</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 연락하기 섹션 -->
+    <section id="contact" class="contact-section">
+        <div class="section-container">
+            <h2 class="section-title">연락하기</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3>📝 문의하기</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="이름" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="연락처" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="package" name="package" required>
+                                <option value="">패키지 선택</option>
+                                <option value="basic">기본 패키지 (50,000원)</option>
+                                <option value="premium">프리미엄 패키지 (80,000원)</option>
+                                <option value="luxury">럭셔리 패키지 (120,000원)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="메시지를 남겨주세요" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">문의하기</button>
+                    </form>
+                </div>
+                <div class="contact-links">
+                    <h3>빠른 연락</h3>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/ttong_gae_06?igsh=d3FtcWc5emtrbjlz" target="_blank" class="social-link instagram">
+                            <span class="social-icon">📷</span>
+                            Instagram
+                        </a>
+                        <a href="#" class="social-link kakao">
+                            <span class="social-icon">💬</span>
+                            KakaoTalk
+                        </a>
+                        <a href="tel:010-1234-5678" class="social-link phone">
+                            <span class="social-icon">📞</span>
+                            010-7528-8380
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 범수스냅 2025</p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/ttong_gae_06?igsh=d3FtcWc5emtrbjlz" target="_blank" class="footer-social-link">📷</a>
+                <a href="#" class="footer-social-link">💬</a>
+                <a href="admin.html" class="admin-link">관리자</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

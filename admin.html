@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>범픽 - 관리자 페이지</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .admin-header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #c0392b;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .inquiries-section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: #34495e;
+            color: white;
+            padding: 1rem 1.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .filters {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #ecf0f1;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .filter-select {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .inquiry-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .inquiry-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid #ecf0f1;
+            transition: background 0.3s ease;
+        }
+
+        .inquiry-item:hover {
+            background: #f8f9fa;
+        }
+
+        .inquiry-item.new {
+            border-left: 4px solid #e74c3c;
+        }
+
+        .inquiry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .inquiry-info {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .customer-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+
+        .inquiry-date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .status-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .status-waiting {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-replied {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .inquiry-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-bottom: 0.2rem;
+        }
+
+        .detail-value {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .inquiry-message {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 3px solid #e74c3c;
+        }
+
+        .reply-section {
+            margin-top: 1rem;
+        }
+
+        .reply-textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .reply-actions {
+            margin-top: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .reply-btn {
+            background: #27ae60;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .reply-btn:hover {
+            background: #219a52;
+        }
+
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+
+        .no-inquiries {
+            text-align: center;
+            padding: 3rem;
+            color: #7f8c8d;
+        }
+
+        .existing-reply {
+            background: #e8f5e8;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 3px solid #27ae60;
+        }
+
+        .reply-date {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .admin-container {
+                padding: 0 1rem;
+            }
+
+            .inquiry-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .inquiry-details {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <div class="admin-header-content">
+            <h1 class="admin-title">📊 범픽 관리자 페이지</h1>
+            <a href="index.html" class="back-btn">메인으로 돌아가기</a>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalInquiries">0</div>
+                <div class="stat-label">총 문의</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="newInquiries">0</div>
+                <div class="stat-label">새 문의</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="repliedInquiries">0</div>
+                <div class="stat-label">답변 완료</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="todayInquiries">0</div>
+                <div class="stat-label">오늘 문의</div>
+            </div>
+        </div>
+
+        <div class="inquiries-section">
+            <div class="section-header">
+                📝 문의 내역 관리
+            </div>
+            <div class="filters">
+                <label>상태별 필터:</label>
+                <select class="filter-select" id="statusFilter">
+                    <option value="all">전체</option>
+                    <option value="대기중">대기중</option>
+                    <option value="답변완료">답변완료</option>
+                </select>
+                <label>패키지별 필터:</label>
+                <select class="filter-select" id="packageFilter">
+                    <option value="all">전체</option>
+                    <option value="basic">기본 패키지</option>
+                    <option value="premium">프리미엄 패키지</option>
+                    <option value="luxury">럭셔리 패키지</option>
+                </select>
+            </div>
+            <div class="inquiry-list" id="inquiryList">
+                <div class="no-inquiries">
+                    아직 문의가 없습니다.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadInquiries();
+            setupFilters();
+        });
+
+        function loadInquiries() {
+            const inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
+            updateStats(inquiries);
+            displayInquiries(inquiries);
+        }
+
+        function updateStats(inquiries) {
+            const total = inquiries.length;
+            const newInquiries = inquiries.filter(i => i.status === '대기중').length;
+            const replied = inquiries.filter(i => i.status === '답변완료').length;
+            const today = new Date().toLocaleDateString('ko-KR');
+            const todayInquiries = inquiries.filter(i => i.timestamp.split(' ')[0] === today).length;
+
+            document.getElementById('totalInquiries').textContent = total;
+            document.getElementById('newInquiries').textContent = newInquiries;
+            document.getElementById('repliedInquiries').textContent = replied;
+            document.getElementById('todayInquiries').textContent = todayInquiries;
+        }
+
+        function displayInquiries(inquiries) {
+            const inquiryList = document.getElementById('inquiryList');
+            
+            if (inquiries.length === 0) {
+                inquiryList.innerHTML = '<div class="no-inquiries">아직 문의가 없습니다.</div>';
+                return;
+            }
+
+            // 최신순으로 정렬
+            inquiries.sort((a, b) => b.id - a.id);
+
+            inquiryList.innerHTML = inquiries.map(inquiry => `
+                <div class="inquiry-item ${inquiry.status === '대기중' ? 'new' : ''}" data-id="${inquiry.id}">
+                    <div class="inquiry-header">
+                        <div class="inquiry-info">
+                            <span class="customer-name">${inquiry.name}</span>
+                            <span class="inquiry-date">${inquiry.timestamp}</span>
+                        </div>
+                        <span class="status-badge ${inquiry.status === '대기중' ? 'status-waiting' : 'status-replied'}">
+                            ${inquiry.status}
+                        </span>
+                    </div>
+                    
+                    <div class="inquiry-details">
+                        <div class="detail-item">
+                            <span class="detail-label">연락처</span>
+                            <span class="detail-value">${inquiry.phone}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">패키지</span>
+                            <span class="detail-value">${getPackageName(inquiry.package)}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">희망 날짜</span>
+                            <span class="detail-value">${inquiry.date}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="inquiry-message">
+                        <strong>문의 내용:</strong><br>
+                        ${inquiry.message}
+                    </div>
+                    
+                    ${inquiry.reply ? `
+                        <div class="existing-reply">
+                            <div class="reply-date">답변일: ${inquiry.replyDate}</div>
+                            <strong>답변:</strong><br>
+                            ${inquiry.reply}
+                        </div>
+                    ` : `
+                        <div class="reply-section">
+                            <textarea class="reply-textarea" placeholder="답변을 입력하세요..." data-id="${inquiry.id}"></textarea>
+                            <div class="reply-actions">
+                                <button class="reply-btn" onclick="sendReply(${inquiry.id})">답변 보내기</button>
+                                <button class="delete-btn" onclick="deleteInquiry(${inquiry.id})">삭제</button>
+                            </div>
+                        </div>
+                    `}
+                </div>
+            `).join('');
+        }
+
+        function getPackageName(value) {
+            const packages = {
+                'basic': '기본 패키지 (50,000원)',
+                'premium': '프리미엄 패키지 (80,000원)',
+                'luxury': '럭셔리 패키지 (120,000원)'
+            };
+            return packages[value] || value;
+        }
+
+        function sendReply(inquiryId) {
+            const textarea = document.querySelector(`textarea[data-id="${inquiryId}"]`);
+            const replyText = textarea.value.trim();
+            
+            if (!replyText) {
+                alert('답변 내용을 입력해주세요.');
+                return;
+            }
+
+            let inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
+            const inquiryIndex = inquiries.findIndex(i => i.id === inquiryId);
+            
+            if (inquiryIndex !== -1) {
+                inquiries[inquiryIndex].status = '답변완료';
+                inquiries[inquiryIndex].reply = replyText;
+                inquiries[inquiryIndex].replyDate = new Date().toLocaleString('ko-KR');
+                
+                localStorage.setItem('inquiries', JSON.stringify(inquiries));
+                
+                alert('답변이 전송되었습니다.');
+                loadInquiries();
+            }
+        }
+
+        function deleteInquiry(inquiryId) {
+            if (!confirm('정말로 이 문의를 삭제하시겠습니까?')) {
+                return;
+            }
+
+            let inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
+            inquiries = inquiries.filter(i => i.id !== inquiryId);
+            localStorage.setItem('inquiries', JSON.stringify(inquiries));
+            
+            alert('문의가 삭제되었습니다.');
+            loadInquiries();
+        }
+
+        function setupFilters() {
+            const statusFilter = document.getElementById('statusFilter');
+            const packageFilter = document.getElementById('packageFilter');
+
+            statusFilter.addEventListener('change', applyFilters);
+            packageFilter.addEventListener('change', applyFilters);
+        }
+
+        function applyFilters() {
+            const statusFilter = document.getElementById('statusFilter').value;
+            const packageFilter = document.getElementById('packageFilter').value;
+            
+            let inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
+            
+            if (statusFilter !== 'all') {
+                inquiries = inquiries.filter(i => i.status === statusFilter);
+            }
+            
+            if (packageFilter !== 'all') {
+                inquiries = inquiries.filter(i => i.package === packageFilter);
+            }
+            
+            displayInquiries(inquiries);
+        }
+    </script>
+</body>
+</html> 
