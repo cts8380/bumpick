@@ -1,0 +1,8 @@
+# 관리자 페이지는 배포하지 않음 (보안상 위험)
+admin.html
+
+# 기타 제외할 파일들
+.DS_Store
+*.log
+node_modules/
+.env 
