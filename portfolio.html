@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오 - 범픽</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">범픽</div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">홈</a>
+                <a href="index.html#about" class="nav-link">소개</a>
+                <a href="index.html#pricing" class="nav-link">가격안내</a>
+                <a href="portfolio.html" class="nav-link active">포트폴리오</a>
+                <a href="location.html" class="nav-link">위치안내</a>
+                <a href="index.html#contact" class="nav-link">연락하기</a>
+            </nav>
+            <div class="mobile-menu-btn">☰</div>
+        </div>
+    </header>
+
+    <!-- 포트폴리오 메인 섹션 -->
+    <section class="portfolio-main">
+        <div class="section-container">
+            <h1 class="page-title">포트폴리오</h1>
+            <p class="page-description">실제 고객님들의 소중한 순간들을 담은 작품들입니다</p>
+            
+            <!-- 카테고리 필터 -->
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">전체</button>
+                <button class="filter-btn" data-filter="couple">커플</button>
+                <button class="filter-btn" data-filter="family">가족</button>
+                <button class="filter-btn" data-filter="individual">개인</button>
+                <button class="filter-btn" data-filter="wedding">웨딩</button>
+            </div>
+
+            <!-- 포트폴리오 갤러리 -->
+            <div class="portfolio-gallery">
+                <div class="portfolio-item" data-category="couple">
+                    <img src="images/IMG_2048.jpg" alt="커플 스냅 1">
+                    <div class="portfolio-overlay">
+                        <h4>로맨틱 커플 스냅</h4>
+                        <p>한강공원 · 골든아워</p>
+                        <span class="view-btn">자세히 보기</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="family">
+                    <img src="images/IMG_2047.jpg" alt="가족 사진 1">
+                    <div class="portfolio-overlay">
+                        <h4>따뜻한 가족 사진</h4>
+                        <p>서울숲 · 오후 햇살</p>
+                        <span class="view-btn">자세히 보기</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="individual">
+                    <img src="images/IMG_2046.jpg" alt="개인 프로필 1">
+                    <div class="portfolio-overlay">
+                        <h4>개인 프로필 촬영</h4>
+                        <p>경복궁 · 전통미</p>
+                        <span class="view-btn">자세히 보기</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="couple">
+                    <img src="images/IMG_2048.jpg" alt="커플 스냅 2">
+                    <div class="portfolio-overlay">
+                        <h4>자연스러운 커플 스냅</h4>
+                        <p>남산타워 · 야경</p>
+                        <span class="view-btn">자세히 보기</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="wedding">
+                    <img src="images/IMG_2047.jpg" alt="웨딩 사진 1">
+                    <div class="portfolio-overlay">
+                        <h4>웨딩 스냅</h4>
+                        <p>덕수궁 · 클래식</p>
+                        <span class="view-btn">자세히 보기</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="family">
+                    <img src="images/IMG_2046.jpg" alt="가족 사진 2">
+                    <div class="portfolio-overlay">
+                        <h4>행복한 가족 순간</h4>
+                        <p>올림픽공원 · 봄날</p>
+                        <span class="view-btn">자세히 보기</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 문의 버튼 -->
+            <div class="portfolio-cta">
+                <h3>마음에 드는 스타일이 있으신가요?</h3>
+                <p>지금 바로 문의해보세요!</p>
+                <a href="index.html#contact" class="cta-btn">촬영 문의하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 범수스냅 2025</p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/ttong_gae_06?igsh=d3FtcWc5emtrbjlz" target="_blank" class="footer-social-link">📷</a>
+                <a href="#" class="footer-social-link">💬</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="portfolio.js"></script>
+</body>
+</html> 

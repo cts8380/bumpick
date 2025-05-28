@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 네비게이션 링크 부드러운 스크롤
-    document.querySelectorAll('.nav-link').forEach(link => {
+    // 네비게이션 링크 부드러운 스크롤 (내부 링크만)
+    document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const targetId = link.getAttribute('href');

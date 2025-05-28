@@ -40,7 +40,7 @@ body {
 .logo {
     font-size: 1.8rem;
     font-weight: bold;
-    background: linear-gradient(135deg, #e74c3c, #f39c12, #e67e22);
+    background: linear-gradient(135deg, #e74c3c, #4a6cff, #e67e22);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -51,7 +51,7 @@ body {
 }
 
 .logo::before {
-    content: "📸";
+    /* content: "📸"; */
     font-size: 2rem;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
     animation: cameraShine 3s ease-in-out infinite;
@@ -633,7 +633,7 @@ body {
 .footer {
     background: #2c3e50;
     color: white;
-    padding: 2rem 0;
+    padding: 4rem 0;
 }
 
 .footer-content {
@@ -747,4 +747,338 @@ body {
     .form-group input[type="date"]:focus::-webkit-datetime-edit-year-field {
         color: #333;
     }
+} 
+
+/* 새로운 페이지 공통 스타일 */
+.page-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    font-weight: 300;
+    margin-top: 6rem;
+}
+
+.page-description {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #7f8c8d;
+    margin-bottom: 4rem;
+    line-height: 1.8;
+}
+
+.nav-link.active {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* 포트폴리오 페이지 스타일 */
+.portfolio-main {
+    background: #f8f9fa;
+    min-height: 100vh;
+    padding-top: 2rem;
+}
+
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #e74c3c;
+    background: white;
+    color: #e74c3c;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: #e74c3c;
+    color: white;
+}
+
+.portfolio-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.portfolio-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+    color: white;
+    padding: 2rem 1.5rem 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    transform: translateY(0);
+}
+
+.portfolio-overlay h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-overlay p {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+.view-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #e74c3c;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.portfolio-cta {
+    text-align: center;
+    background: white;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-cta h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.portfolio-cta p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin-bottom: 2rem;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: #e74c3c;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #c0392b;
+}
+
+/* 위치안내 페이지 스타일 */
+.location-main {
+    background: white;
+    min-height: 100vh;
+    padding-top: 2rem;
+}
+
+.today-date {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.today-date span {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: #e74c3c;
+    color: white;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.location-card {
+    position: relative;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.location-card.featured {
+    border-color: #e74c3c;
+    transform: scale(1.02);
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+}
+
+.location-card.featured:hover {
+    transform: scale(1.02) translateY(-5px);
+}
+
+.location-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #e74c3c;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.location-time {
+    font-size: 1.1rem;
+    color: #e74c3c;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.location-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.feature-tag {
+    background: #f8f9fa;
+    color: #666;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+.location-btn {
+    width: 100%;
+    padding: 1rem;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 1rem;
+}
+
+.location-btn:hover {
+    background: #c0392b;
+}
+
+.location-btn.disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.location-btn.disabled:hover {
+    background: #bdc3c7;
+}
+
+.reservation-info {
+    background: #f8f9fa;
+    padding: 3rem;
+    border-radius: 15px;
+    margin-bottom: 3rem;
+}
+
+.reservation-info h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.info-item {
+    text-align: center;
+}
+
+.info-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.info-item p {
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+.location-cta {
+    text-align: center;
+    background: #2c3e50;
+    color: white;
+    padding: 3rem;
+    border-radius: 15px;
+}
+
+.location-cta h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.location-cta p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.location-cta .cta-btn {
+    background: #e74c3c;
+}
+
+.location-cta .cta-btn:hover {
+    background: #c0392b;
 } 

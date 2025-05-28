@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>위치안내 - 범픽</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">범픽</div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">홈</a>
+                <a href="index.html#about" class="nav-link">소개</a>
+                <a href="index.html#pricing" class="nav-link">가격안내</a>
+                <a href="portfolio.html" class="nav-link">포트폴리오</a>
+                <a href="location.html" class="nav-link active">위치안내</a>
+                <a href="index.html#contact" class="nav-link">연락하기</a>
+            </nav>
+            <div class="mobile-menu-btn">☰</div>
+        </div>
+    </header>
+
+    <!-- 위치안내 메인 섹션 -->
+    <section class="location-main">
+        <div class="section-container">
+            <h1 class="page-title">오늘의 촬영 장소</h1>
+            <p class="page-description">매일 업데이트되는 추천 촬영 장소를 확인해보세요</p>
+            
+            <!-- 오늘 날짜 표시 -->
+            <div class="today-date">
+                <span id="current-date"></span>
+            </div>
+
+            <!-- 촬영 장소 목록 -->
+            <div class="location-grid">
+                <div class="location-card featured">
+                    <div class="location-badge">추천</div>
+                    <div class="location-icon">📍</div>
+                    <h3>서울숲</h3>
+                    <p class="location-time">오후 3시 ~ 6시</p>
+                    <p class="location-desc">자연과 도시가 어우러진 아름다운 배경으로 사계절 내내 인기가 높은 촬영지입니다.</p>
+                    <div class="location-features">
+                        <span class="feature-tag">자연광</span>
+                        <span class="feature-tag">넓은 공간</span>
+                        <span class="feature-tag">주차 가능</span>
+                    </div>
+                    <div class="location-status available">예약 가능</div>
+                    <button class="location-btn">예약하기</button>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-icon">🌅</div>
+                    <h3>한강공원</h3>
+                    <p class="location-time">오후 5시 ~ 7시</p>
+                    <p class="location-desc">황금빛 노을과 함께하는 로맨틱한 순간을 담을 수 있는 최고의 장소입니다.</p>
+                    <div class="location-features">
+                        <span class="feature-tag">골든아워</span>
+                        <span class="feature-tag">강변 뷰</span>
+                        <span class="feature-tag">접근성 좋음</span>
+                    </div>
+                    <div class="location-status busy">예약 중</div>
+                    <button class="location-btn disabled">대기 중</button>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-icon">🏛️</div>
+                    <h3>경복궁</h3>
+                    <p class="location-time">오전 10시 ~ 12시</p>
+                    <p class="location-desc">전통과 현대가 만나는 특별한 공간에서 한국의 아름다움을 담아보세요.</p>
+                    <div class="location-features">
+                        <span class="feature-tag">전통미</span>
+                        <span class="feature-tag">한복 촬영</span>
+                        <span class="feature-tag">문화재</span>
+                    </div>
+                    <div class="location-status available">예약 가능</div>
+                    <button class="location-btn">예약하기</button>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-icon">🌸</div>
+                    <h3>여의도공원</h3>
+                    <p class="location-time">오후 2시 ~ 5시</p>
+                    <p class="location-desc">계절별 다양한 꽃과 나무들이 아름다운 배경을 만들어주는 도심 속 힐링 공간입니다.</p>
+                    <div class="location-features">
+                        <span class="feature-tag">계절감</span>
+                        <span class="feature-tag">벚꽃</span>
+                        <span class="feature-tag">산책로</span>
+                    </div>
+                    <div class="location-status available">예약 가능</div>
+                    <button class="location-btn">예약하기</button>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-icon">🏙️</div>
+                    <h3>남산타워</h3>
+                    <p class="location-time">오후 6시 ~ 8시</p>
+                    <p class="location-desc">서울의 야경을 배경으로 한 로맨틱한 촬영이 가능한 대표적인 랜드마크입니다.</p>
+                    <div class="location-features">
+                        <span class="feature-tag">야경</span>
+                        <span class="feature-tag">도시 뷰</span>
+                        <span class="feature-tag">랜드마크</span>
+                    </div>
+                    <div class="location-status available">예약 가능</div>
+                    <button class="location-btn">예약하기</button>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-icon">🌊</div>
+                    <h3>반포한강공원</h3>
+                    <p class="location-time">오후 7시 ~ 9시</p>
+                    <p class="location-desc">무지개분수와 함께하는 특별한 촬영으로 독특하고 화려한 배경을 연출할 수 있습니다.</p>
+                    <div class="location-features">
+                        <span class="feature-tag">분수쇼</span>
+                        <span class="feature-tag">야간 촬영</span>
+                        <span class="feature-tag">특별함</span>
+                    </div>
+                    <div class="location-status busy">예약 중</div>
+                    <button class="location-btn disabled">대기 중</button>
+                </div>
+            </div>
+
+            <!-- 예약 안내 -->
+            <div class="reservation-info">
+                <h3>📋 예약 안내</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h4>⏰ 예약 시간</h4>
+                        <p>최소 1일 전 예약 필수<br>당일 예약은 불가능합니다</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>🌤️ 날씨 정책</h4>
+                        <p>우천 시 무료 일정 변경<br>맑은 날 최고의 결과물 보장</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>📍 장소 변경</h4>
+                        <p>고객 요청 시 장소 변경 가능<br>추가 비용 없음</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 문의 버튼 -->
+            <div class="location-cta">
+                <h3>원하는 장소가 있으신가요?</h3>
+                <p>언제든지 문의해주세요!</p>
+                <a href="index.html#contact" class="cta-btn">촬영 문의하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 범수스냅 2025</p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/ttong_gae_06?igsh=d3FtcWc5emtrbjlz" target="_blank" class="footer-social-link">📷</a>
+                <a href="#" class="footer-social-link">💬</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="location.js"></script>
+</body>
+</html> 
