@@ -182,4 +182,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const dateInput = document.getElementById('date');
     const today = new Date().toISOString().split('T')[0];
     dateInput.min = today;
+    
+    // 모바일에서 날짜 입력 필드 개선
+    dateInput.addEventListener('focus', function() {
+        this.style.color = '#333';
+    });
+    
+    dateInput.addEventListener('blur', function() {
+        if (!this.value) {
+            this.style.color = '#999';
+        }
+    });
+    
+    // 날짜 입력 필드에 라벨 추가 (모바일 지원)
+    if (dateInput && !dateInput.value) {
+        dateInput.style.color = '#999';
+        const label = document.createElement('label');
+        label.setAttribute('for', 'date');
+        label.textContent = '촬영 희망 날짜';
+        label.style.fontSize = '0.9rem';
+        label.style.color = '#666';
+        label.style.marginBottom = '0.5rem';
+        label.style.display = 'block';
+        dateInput.parentNode.insertBefore(label, dateInput);
+    }
 }); 

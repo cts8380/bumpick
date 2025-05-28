@@ -40,7 +40,26 @@ body {
 .logo {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #2c3e50;
+    background: linear-gradient(135deg, #e74c3c, #f39c12, #e67e22);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo::before {
+    content: "📸";
+    font-size: 2rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    animation: cameraShine 3s ease-in-out infinite;
+}
+
+@keyframes cameraShine {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 .nav {
@@ -535,6 +554,26 @@ body {
     border-color: #e74c3c;
 }
 
+.form-group input[type="date"] {
+    position: relative;
+    color: #333;
+}
+
+.form-group input[type="date"]:invalid {
+    color: #999;
+}
+
+.form-group input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #999;
+    margin-right: 0.5em;
+}
+
+.form-group input[type="date"]:focus:before,
+.form-group input[type="date"]:valid:before {
+    display: none;
+}
+
 .submit-btn {
     width: 100%;
     padding: 1rem;
@@ -684,5 +723,28 @@ body {
     
     .pricing-card.popular {
         transform: none;
+    }
+
+    /* 모바일에서 날짜 입력 개선 */
+    .form-group input[type="date"] {
+        background-color: #f8f9fa;
+        position: relative;
+    }
+    
+    .form-group input[type="date"]::-webkit-datetime-edit-text {
+        color: #999;
+    }
+    
+    .form-group input[type="date"]::-webkit-datetime-edit-month-field,
+    .form-group input[type="date"]::-webkit-datetime-edit-day-field,
+    .form-group input[type="date"]::-webkit-datetime-edit-year-field {
+        color: #999;
+    }
+    
+    .form-group input[type="date"]:focus::-webkit-datetime-edit-text,
+    .form-group input[type="date"]:focus::-webkit-datetime-edit-month-field,
+    .form-group input[type="date"]:focus::-webkit-datetime-edit-day-field,
+    .form-group input[type="date"]:focus::-webkit-datetime-edit-year-field {
+        color: #333;
     }
 } 
