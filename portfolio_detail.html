@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오 상세 - 범픽</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .detail-main {
+            background: #f8f9fa;
+            min-height: 100vh;
+            padding-top: 2rem;
+        }
+        
+        .detail-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .detail-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .detail-image {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .detail-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .detail-title {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+        
+        .detail-location {
+            font-size: 1.2rem;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .detail-category {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        
+        .detail-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+        
+        .additional-images-section {
+            margin: 3rem 0;
+        }
+        
+        .additional-images-title {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+        
+        .additional-images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .additional-image-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            aspect-ratio: 1;
+        }
+        
+        .additional-image-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .additional-image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .detail-actions {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .back-btn, .contact-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            margin: 0 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .back-btn:hover {
+            background: #7f8c8d;
+        }
+        
+        .contact-btn {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .contact-btn:hover {
+            background: #c0392b;
+        }
+        
+        .related-section {
+            margin-top: 4rem;
+        }
+        
+        .related-title {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .related-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .related-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .related-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .related-item-info {
+            padding: 1rem;
+        }
+        
+        .related-item h4 {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .related-item p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .detail-container {
+                padding: 1rem;
+            }
+            
+            .detail-title {
+                font-size: 2rem;
+            }
+            
+            .detail-image {
+                height: 300px;
+            }
+            
+            .back-btn, .contact-btn {
+                display: block;
+                margin: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html#intro" class="logo">범픽</a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">홈</a>
+                <a href="index.html#about" class="nav-link">소개</a>
+                <a href="index.html#pricing" class="nav-link">가격안내</a>
+                <a href="portfolio.html" class="nav-link">포트폴리오</a>
+                <a href="location.html" class="nav-link">위치안내</a>
+                <a href="index.html#contact" class="nav-link">연락하기</a>
+            </nav>
+            <div class="mobile-menu-btn">☰</div>
+        </div>
+    </header>
+
+    <!-- 포트폴리오 상세 메인 -->
+    <main class="detail-main">
+        <div class="detail-container">
+            <div class="detail-header">
+                <img id="detailImage" class="detail-image" src="" alt="">
+            </div>
+            
+            <div class="detail-info">
+                <h1 id="detailTitle" class="detail-title"></h1>
+                <p id="detailLocation" class="detail-location"></p>
+                <span id="detailCategory" class="detail-category"></span>
+                <div id="detailDescription" class="detail-description"></div>
+            </div>
+            
+            <!-- 추가 이미지들 -->
+            <div class="additional-images-section" id="additionalImagesSection" style="display: none;">
+                <h3 class="additional-images-title">더 많은 사진들</h3>
+                <div class="additional-images-grid" id="additionalImagesGrid">
+                    <!-- 동적으로 생성됨 -->
+                </div>
+            </div>
+            
+            <div class="detail-actions">
+                <a href="portfolio.html" class="back-btn">← 포트폴리오로 돌아가기</a>
+                <a href="index.html#contact" class="contact-btn">촬영 문의하기</a>
+            </div>
+            
+            <!-- 관련 포트폴리오 -->
+            <div class="related-section">
+                <h2 class="related-title">다른 포트폴리오</h2>
+                <div class="related-grid" id="relatedGrid">
+                    <!-- 동적으로 생성됨 -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 범수스냅 2025</p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/ttong_gae_06?igsh=d3FtcWc5emtrbjlz" target="_blank" class="footer-social-link">📷</a>
+                <a href="#" class="footer-social-link">💬</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('.header');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('.nav');
+            
+            // URL에서 포트폴리오 ID 가져오기
+            const urlParams = new URLSearchParams(window.location.search);
+            const portfolioId = urlParams.get('id');
+            
+            if (portfolioId) {
+                loadPortfolioDetail(portfolioId);
+            } else {
+                // ID가 없으면 포트폴리오 페이지로 리다이렉트
+                window.location.href = 'portfolio.html';
+            }
+            
+            // 헤더 스크롤 효과
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // 모바일 메뉴 토글
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+                    nav.style.position = 'absolute';
+                    nav.style.top = '100%';
+                    nav.style.left = '0';
+                    nav.style.right = '0';
+                    nav.style.background = 'white';
+                    nav.style.flexDirection = 'column';
+                    nav.style.padding = '1rem';
+                    nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                });
+            }
+        });
+        
+        function loadPortfolioDetail(id) {
+            const portfolios = JSON.parse(localStorage.getItem('portfolios') || '[]');
+            const portfolio = portfolios.find(p => p.id == id);
+            
+            if (!portfolio) {
+                alert('포트폴리오를 찾을 수 없습니다.');
+                window.location.href = 'portfolio.html';
+                return;
+            }
+            
+            // 포트폴리오 정보 표시
+            document.getElementById('detailImage').src = portfolio.image;
+            document.getElementById('detailImage').alt = portfolio.title;
+            document.getElementById('detailTitle').textContent = portfolio.title;
+            document.getElementById('detailLocation').textContent = portfolio.location;
+            document.getElementById('detailCategory').textContent = getCategoryName(portfolio.category);
+            document.getElementById('detailDescription').textContent = portfolio.details || '이 포트폴리오에 대한 상세 설명이 준비 중입니다.';
+            
+            // 페이지 제목 업데이트
+            document.title = `${portfolio.title} - 범픽`;
+            
+            // 추가 이미지들 로드
+            loadAdditionalImages(portfolio.additionalImages || []);
+            
+            // 관련 포트폴리오 로드 (같은 카테고리, 현재 포트폴리오 제외)
+            loadRelatedPortfolios(portfolio.category, portfolio.id);
+        }
+        
+        function getCategoryName(category) {
+            const categories = {
+                'couple': '커플',
+                'family': '가족',
+                'individual': '개인',
+                'wedding': '웨딩'
+            };
+            return categories[category] || category;
+        }
+        
+        function loadRelatedPortfolios(category, currentId) {
+            const portfolios = JSON.parse(localStorage.getItem('portfolios') || '[]');
+            const related = portfolios.filter(p => p.category === category && p.id != currentId).slice(0, 3);
+            
+            const relatedGrid = document.getElementById('relatedGrid');
+            
+            if (related.length === 0) {
+                relatedGrid.innerHTML = '<p style="text-align: center; color: #7f8c8d; grid-column: 1/-1;">관련 포트폴리오가 없습니다.</p>';
+                return;
+            }
+            
+            relatedGrid.innerHTML = related.map(portfolio => `
+                <div class="related-item" onclick="viewPortfolio(${portfolio.id})">
+                    <img src="${portfolio.image}" alt="${portfolio.title}" onerror="this.style.display='none';">
+                    <div class="related-item-info">
+                        <h4>${portfolio.title}</h4>
+                        <p>${portfolio.location}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function viewPortfolio(id) {
+            window.location.href = `portfolio_detail.html?id=${id}`;
+        }
+        
+        function loadAdditionalImages(additionalImages) {
+            const section = document.getElementById('additionalImagesSection');
+            const grid = document.getElementById('additionalImagesGrid');
+            
+            if (additionalImages && additionalImages.length > 0) {
+                section.style.display = 'block';
+                grid.innerHTML = additionalImages.map((imageData, index) => `
+                    <div class="additional-image-item" onclick="openImageModal('${imageData}')">
+                        <img src="${imageData}" alt="추가 이미지 ${index + 1}" onerror="this.parentNode.style.display='none';">
+                    </div>
+                `).join('');
+            } else {
+                section.style.display = 'none';
+            }
+        }
+        
+        // 이미지 모달 열기 (클릭 시 큰 이미지 보기)
+        function openImageModal(imageSrc) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                cursor: pointer;
+            `;
+            
+            const img = document.createElement('img');
+            img.src = imageSrc;
+            img.style.cssText = `
+                max-width: 90%;
+                max-height: 90%;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            `;
+            
+            modal.appendChild(img);
+            document.body.appendChild(modal);
+            
+            modal.addEventListener('click', () => {
+                document.body.removeChild(modal);
+            });
+        }
+    </script>
+</body>
+</html>

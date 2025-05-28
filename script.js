@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // 스크롤 가능하게 변경
         setTimeout(() => {
             document.body.style.overflow = 'auto';
-        }, 3000);
-    }, 1500);
+        }, 2000);
+    }, 800);
 
     // 스크롤 인디케이터 클릭 시 부드럽게 스크롤
     scrollIndicator.addEventListener('click', () => {
@@ -183,6 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const today = new Date().toISOString().split('T')[0];
     dateInput.min = today;
     
+    // URL 파라미터 확인 및 폼 자동 입력
+    handleURLParams();
+    
     // 모바일에서 날짜 입력 필드 개선
     dateInput.addEventListener('focus', function() {
         this.style.color = '#333';
@@ -198,12 +201,76 @@ document.addEventListener('DOMContentLoaded', () => {
     if (dateInput && !dateInput.value) {
         dateInput.style.color = '#999';
         const label = document.createElement('label');
-        label.setAttribute('for', 'date');
         label.textContent = '촬영 희망 날짜';
-        label.style.fontSize = '0.9rem';
-        label.style.color = '#666';
-        label.style.marginBottom = '0.5rem';
-        label.style.display = 'block';
-        dateInput.parentNode.insertBefore(label, dateInput);
+        label.style.position = 'absolute';
+        label.style.left = '1rem';
+        label.style.top = '1rem';
+        label.style.color = '#999';
+        label.style.pointerEvents = 'none';
+        label.style.transition = 'all 0.3s ease';
+        
+        const formGroup = dateInput.parentElement;
+        formGroup.style.position = 'relative';
+        formGroup.insertBefore(label, dateInput);
+        
+        dateInput.addEventListener('focus', () => {
+            label.style.transform = 'translateY(-1.5rem) scale(0.8)';
+            label.style.color = '#e74c3c';
+        });
+        
+        dateInput.addEventListener('blur', () => {
+            if (!dateInput.value) {
+                label.style.transform = 'translateY(0) scale(1)';
+                label.style.color = '#999';
+            }
+        });
+        
+        if (dateInput.value) {
+            label.style.transform = 'translateY(-1.5rem) scale(0.8)';
+            label.style.color = '#e74c3c';
+        }
+    }
+    
+    // URL 파라미터 처리 (위치안내에서 예약 시)
+    function handleURLParams() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const location = urlParams.get('location');
+        const date = urlParams.get('date');
+        const message = urlParams.get('message');
+        
+        if (location || date || message) {
+            // 연락하기 섹션으로 스크롤
+            setTimeout(() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // 폼 필드 자동 입력
+                    if (date) {
+                        const dateInput = document.getElementById('date');
+                        if (dateInput) {
+                            dateInput.value = date;
+                        }
+                    }
+                    
+                    if (message) {
+                        const messageTextarea = document.getElementById('message');
+                        if (messageTextarea) {
+                            // 기존 메시지가 있으면 추가, 없으면 새로 설정
+                            const currentMessage = messageTextarea.value.trim();
+                            if (currentMessage) {
+                                messageTextarea.value = currentMessage + '\n\n' + message;
+                            } else {
+                                messageTextarea.value = message;
+                            }
+                        }
+                    }
+                    
+                    // URL에서 파라미터 제거 (깔끔하게)
+                    const newUrl = window.location.pathname + window.location.hash.split('?')[0];
+                    window.history.replaceState({}, document.title, newUrl);
+                }
+            }, 500);
+        }
     }
 }); 

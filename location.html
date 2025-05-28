@@ -10,7 +10,7 @@
     <!-- 헤더 -->
     <header class="header">
         <div class="header-content">
-            <div class="logo">범픽</div>
+            <a href="index.html#intro" class="logo">범픽</a>
             <nav class="nav">
                 <a href="index.html" class="nav-link">홈</a>
                 <a href="index.html#about" class="nav-link">소개</a>
@@ -34,92 +34,29 @@
                 <span id="current-date"></span>
             </div>
 
-            <!-- 촬영 장소 목록 -->
-            <div class="location-grid">
-                <div class="location-card featured">
-                    <div class="location-badge">추천</div>
-                    <div class="location-icon">📍</div>
-                    <h3>서울숲</h3>
-                    <p class="location-time">오후 3시 ~ 6시</p>
-                    <p class="location-desc">자연과 도시가 어우러진 아름다운 배경으로 사계절 내내 인기가 높은 촬영지입니다.</p>
-                    <div class="location-features">
-                        <span class="feature-tag">자연광</span>
-                        <span class="feature-tag">넓은 공간</span>
-                        <span class="feature-tag">주차 가능</span>
-                    </div>
-                    <div class="location-status available">예약 가능</div>
-                    <button class="location-btn">예약하기</button>
-                </div>
+            <!-- 오늘 촬영 장소 목록 -->
+            <div class="location-grid" id="today-grid">
+                <!-- 동적으로 생성됨 -->
+            </div>
 
-                <div class="location-card">
-                    <div class="location-icon">🌅</div>
-                    <h3>한강공원</h3>
-                    <p class="location-time">오후 5시 ~ 7시</p>
-                    <p class="location-desc">황금빛 노을과 함께하는 로맨틱한 순간을 담을 수 있는 최고의 장소입니다.</p>
-                    <div class="location-features">
-                        <span class="feature-tag">골든아워</span>
-                        <span class="feature-tag">강변 뷰</span>
-                        <span class="feature-tag">접근성 좋음</span>
-                    </div>
-                    <div class="location-status busy">예약 중</div>
-                    <button class="location-btn disabled">대기 중</button>
-                </div>
+            <!-- 내일 날짜 표시 -->
+            <div class="tomorrow-date">
+                <span id="tomorrow-date"></span>
+            </div>
 
-                <div class="location-card">
-                    <div class="location-icon">🏛️</div>
-                    <h3>경복궁</h3>
-                    <p class="location-time">오전 10시 ~ 12시</p>
-                    <p class="location-desc">전통과 현대가 만나는 특별한 공간에서 한국의 아름다움을 담아보세요.</p>
-                    <div class="location-features">
-                        <span class="feature-tag">전통미</span>
-                        <span class="feature-tag">한복 촬영</span>
-                        <span class="feature-tag">문화재</span>
-                    </div>
-                    <div class="location-status available">예약 가능</div>
-                    <button class="location-btn">예약하기</button>
-                </div>
+            <!-- 내일 촬영 장소 목록 -->
+            <div class="location-grid" id="tomorrow-grid">
+                <!-- 동적으로 생성됨 -->
+            </div>
 
-                <div class="location-card">
-                    <div class="location-icon">🌸</div>
-                    <h3>여의도공원</h3>
-                    <p class="location-time">오후 2시 ~ 5시</p>
-                    <p class="location-desc">계절별 다양한 꽃과 나무들이 아름다운 배경을 만들어주는 도심 속 힐링 공간입니다.</p>
-                    <div class="location-features">
-                        <span class="feature-tag">계절감</span>
-                        <span class="feature-tag">벚꽃</span>
-                        <span class="feature-tag">산책로</span>
-                    </div>
-                    <div class="location-status available">예약 가능</div>
-                    <button class="location-btn">예약하기</button>
-                </div>
+            <!-- 내일모레 날짜 표시 (7개째 위치부터 표시) -->
+            <div class="day-after-tomorrow-date" id="day-after-tomorrow-section" style="display: none;">
+                <span id="day-after-tomorrow-date"></span>
+            </div>
 
-                <div class="location-card">
-                    <div class="location-icon">🏙️</div>
-                    <h3>남산타워</h3>
-                    <p class="location-time">오후 6시 ~ 8시</p>
-                    <p class="location-desc">서울의 야경을 배경으로 한 로맨틱한 촬영이 가능한 대표적인 랜드마크입니다.</p>
-                    <div class="location-features">
-                        <span class="feature-tag">야경</span>
-                        <span class="feature-tag">도시 뷰</span>
-                        <span class="feature-tag">랜드마크</span>
-                    </div>
-                    <div class="location-status available">예약 가능</div>
-                    <button class="location-btn">예약하기</button>
-                </div>
-
-                <div class="location-card">
-                    <div class="location-icon">🌊</div>
-                    <h3>반포한강공원</h3>
-                    <p class="location-time">오후 7시 ~ 9시</p>
-                    <p class="location-desc">무지개분수와 함께하는 특별한 촬영으로 독특하고 화려한 배경을 연출할 수 있습니다.</p>
-                    <div class="location-features">
-                        <span class="feature-tag">분수쇼</span>
-                        <span class="feature-tag">야간 촬영</span>
-                        <span class="feature-tag">특별함</span>
-                    </div>
-                    <div class="location-status busy">예약 중</div>
-                    <button class="location-btn disabled">대기 중</button>
-                </div>
+            <!-- 내일모레 촬영 장소 목록 -->
+            <div class="location-grid" id="day-after-tomorrow-grid">
+                <!-- 동적으로 생성됨 -->
             </div>
 
             <!-- 예약 안내 -->
